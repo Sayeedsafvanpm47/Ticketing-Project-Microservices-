@@ -1,0 +1,20 @@
+apiVersion: skaffold/v4beta3
+kind: Config
+manifests:
+   rawYaml:
+     - ./infra/k8s/*
+build:
+  local:
+    push: false  #to prevent pushing to docker hub
+  artifacts:
+    - image: sydsfn/auth
+      context: auth   #folder that contains all the code for the image
+      docker: 
+        dockerfile: Dockerfile
+      sync:                                  
+        manual:
+          - src: 'src/**/*.ts' #tells how to handle the changes , tells to watch src directory of all files that endes with .ts and set destination to the corresponding path inside the container
+            dest: .                         
+        
+        
+  
