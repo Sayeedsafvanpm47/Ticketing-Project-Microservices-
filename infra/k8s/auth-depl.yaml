@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: auth
-        image: sydsfn/auth
+        image: us.gcr.io/ticketing-417910/auth
      
 
 ---
